@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Product Order List</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td><input type="number" [(ngModel)]="product.quantity" min="0" /></td>
+        <td><button (click)="addToOrder(product)">ADD</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="showOrder()">Show Order</button>
+  <table *ngIf="order.length > 0">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of order">
+        <td>{{ item.name }}</td>
+        <td>{{ item.quantity }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="speakOrder()">What is my Order?</button>
+</div>
